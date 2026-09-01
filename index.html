@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MLK — Inteligência Artificial na Prática</title>
+<meta name="description" content="Aprenda a usar Inteligência Artificial na prática com a MLK.">
+<style>
+:root{--bg:#07101d;--bg2:#0d1928;--card:#111f31;--text:#f5f8fc;--muted:#aab7c8;--blue:#218cff;--blue2:#2c5f96;--line:rgba(255,255,255,.09);--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Montserrat, sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(7,16,29,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:30px;font-weight:900;letter-spacing:-2px}
+.logo span{color:var(--blue)}
+nav{display:flex;gap:28px;color:#c8d3e0;font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--blue);color:#000;padding:13px 22px;border-radius:9px;font-weight:800;border:0;cursor:pointer;box-shadow:0 10px 30px rgba(33,140,255,.2)}
+.btn:hover{background:var(--blue2);transform:translateY(-1px)}
+.hero{min-height:680px;display:flex;align-items:center;background:radial-gradient(circle at 75% 35%,rgba(33,140,255,.2),transparent 34%),linear-gradient(135deg,#07101d,#091827)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center;padding:80px 0}
+.kicker{color:#218CFF;text-transform:TitleCase;letter-spacing:0px;font-weight:800;font-size:12px;margin-bottom:14px}
+h1{font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-3px;max-width:700px}
+h1 span{color:var(--blue2)}
+.hero p{font-size:18px;color:var(--muted);max-width:600px;margin:24px 0 30px}
+.hero-meta{display:flex;gap:22px;flex-wrap:wrap;color:#b9c7d7;font-size:13px;margin-top:18px}
+.hero-art{height:410px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#10243a,#08121f);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.hero-art:before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(33,140,255,.15);filter:blur(25px)}
+.laptop{width:75%;aspect-ratio:1.45;background:#111d2d;border:2px solid #30445b;border-radius:14px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;box-shadow:0 20px 50px #0008}
+.laptop strong{font-size:70px;letter-spacing:-6px}.laptop strong span{color:var(--blue)}
+.float{position:absolute;background:#132840;border:1px solid #2a4969;padding:13px 17px;border-radius:12px;font-weight:800;z-index:2;box-shadow:0 10px 30px #0006}
+.f1{top:45px;right:35px}.f2{bottom:55px;left:25px}.f3{bottom:40px;right:25px;color:#65b4ff}
+section{padding:90px 0}
+.light{background:#000000;color:#f3f6f8}
+.section-head{max-width:700px;margin-bottom:42px}
+.section-head.center{text-align:center;margin-left:auto;margin-right:auto}
+.section-head h2{font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-1.5px;margin:10px 0 15px}
+.section-head p{color:#66758a}
+.dark p{color:var(--muted)}
+.problem{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.problem-box{border-radius:22px;padding:35px;background:#0e1b2b;border:1px solid #d7e6fb}
+.problem-box strong{font-size:22px}
+.solution{background:#0b1726}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{padding:27px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.light .card{background:#0b1726;border-color:#e5ebf2;box-shadow:0 10px 30px rgba(25,45,70,.05)}
+.icon{font-size:27px;margin-bottom:15px}.card h3{font-size:18px;margin-bottom:7px}.card p{font-size:14px;color:var(--muted)}.light .card p{color:#66758a}
+.audience .card{min-height:160px}
+.modules{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.module{padding:23px;border-radius:15px;border:1px solid #dfe7f0;background:#0e1b2b}
+.num{font-size:14px;color:var(--blue);font-weight:900}.module h3{font-size:17px;margin:7px 0}.module p{font-size:13px;color:#68788d}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.step{padding:25px;border:1px solid var(--line);border-radius:15px;background:#0e1d2e}.step b{color:var(--blue2);font-size:27px}.step h3{margin:10px 0 6px}.step p{color:var(--muted);font-size:14px}
+.pricing{background:linear-gradient(180deg,#081321,#07101d)}
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.price{padding:30px;border:1px solid var(--line);border-radius:18px;background:#0d1b2b;display:flex;flex-direction:column}
+.price.featured{border:2px solid var(--dark);transform:translateY(-8px);box-shadow:0 20px 50px rgba(33,140,255,.12)}
+.badge{font-size:11px;background:#000000;padding:5px 9px;border-radius:20px;align-self:flex-start;margin-bottom:15px;font-weight:900}.price h3{font-size:18px}.amount{font-size:38px;font-weight:900;margin:8px 0 18px}.price ul{list-style:none;color:#bdc9d7;font-size:14px;margin-bottom:25px}.price li{margin:9px 0}.price li:before{content:"✓";color:#55aaff;margin-right:8px}.price .btn{margin-top:auto}
+.faq{background:#020202;color:#218CFF}.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.faq details{background:#000000;border:1px solid #218CFF;border-radius:12px;padding:18px 20px}.faq summary{cursor:pointer;font-weight:800}.faq p{color:#69788a;margin-top:12px;font-size:14px}
+.cta{background:radial-gradient(circle at 50% 0,rgba(33,140,255,.25),transparent 45%),#06101c;text-align:center}.cta h2{font-size:clamp(32px,5vw,52px);letter-spacing:-2px}.cta p{color:var(--muted);max-width:650px;margin:14px auto 25px}
+footer{padding:35px 0;border-top:1px solid var(--line);background:#050d16;color:#9eacbd}.footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer strong{color:#fff;font-size:22px}
+@media(max-width:850px){nav{display:none}.hero-grid,.problem{grid-template-columns:1fr}.hero-art{height:300px}.cards,.modules,.prices{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.price.featured{transform:none}}
+@media(max-width:560px){section{padding:65px 0}.cards,.modules,.prices,.steps,.faq-grid{grid-template-columns:1fr}h1{letter-spacing:-2px}.hero-grid{padding:60px 0}.hero-art{height:250px}.laptop strong{font-size:50px}.float{font-size:12px;padding:9px 12px}.nav .btn{padding:10px 13px;font-size：12px}}
+</style>
+</head>
+<body>
+<header>
+<div class="container nav">
+<a class="logo" href="#">
+    <img src="MLKlogo.png" alt="MLK" style="width: 40px; height: auto;">
+</a>
+<nav><a href="#aprender">O que você vai aprender</a><a href="#curso">Curso</a><a href="#planos">Planos</a><a href="#faq">FAQ</a></nav>
+<a class="btn" href="#planos">QUERO APRENDER IA</a>
+</div>
+</header>
+
+<main>
+<section class="hero">
+<div class="container hero-grid">
+<div>
+<div class="kicker">Capacitação em Inteligencia Artificial</div>
+<h1>Aprenda a usar a Inteligência Artificial <span>na prática.</span></h1>
+<p>Descubra como utilizar ferramentas de IA para aumentar sua produtividade, otimizar tarefas, criar soluções e desenvolver novas habilidades para o mercado de trabalho.</p>
+<a class="btn" href="#planos">QUERO COMEÇAR AGORA →</a>
+<div class="hero-meta"><span>◉ Curso online</span><span>◉ Material de apoio</span><span>◉ Suporte ao aluno</span></div>
+</div>
+<div class="hero-art">
+<div class="float f1">IA na prática</div><div class="float f2">Novas habilidades</div><div class="float f3">+ Produtividade</div>
+<div class="laptop"><strong><img src="MLKlogo.png" alt="MLK" style="width: 120px; height: auto;"></strong></div>
+</div>
+</div>
+</section>
+
+<section class="light">
+<div class="container problem">
+<div class="section-head">
+<div class="kicker">O mundo já mudou</div>
+<h2>A Inteligência Artificial está mudando a forma como trabalhamos.</h2>
+<p>Todos os dias surgem novas ferramentas capazes de ajudar na criação de conteúdos, organização de tarefas, pesquisa, produtividade e resolução de problemas.</p>
+<p style="margin-top:12px"><strong>O desafio não é apenas conhecer essas ferramentas. É saber utilizá-las de forma prática.</strong></p>
+</div>
+<div class="problem-box"><strong>Você não precisa ser especialista em tecnologia para começar.</strong><p style="margin-top:10px;color:#64748b">A MLK foi criada para tornar o aprendizado de IA mais acessível e prático.</p></div>
+</div>
+</section>
+
+<section class="solution dark">
+<div class="container">
+<div class="section-head">
+<div class="kicker">Nossa solução</div><h2>É para isso que existe a MLK.</h2>
+<p>A MLK ajuda estudantes e profissionais a desenvolver habilidades para utilizar ferramentas de IA em diferentes situações do dia a dia e do mercado de trabalho.</p>
+</div>
+<div class="cards">
+<div class="card"><div class="icon"></div><h3>Prático</h3><p>Aprendizado pensado para sair da teoria e chegar à aplicação.</p></div>
+<div class="card"><div class="icon"></div><h3>Acessível</h3><p>Conteúdo pensado para quem está começando.</p></div>
+<div class="card"><div class="icon"></div><h3>Atualizado</h3><p>Uma área que muda rápido exige conteúdo em constante evolução.</p></div>
+</div>
+</div>
+</section>
+
+<section id="aprender" class="light">
+<div class="container">
+<div class="section-head center"><div class="kicker">O que você vai aprender</div><h2>Muito mais do que aprender comandos.</h2><p>Conheça as principais áreas que você poderá explorar.</p></div>
+<div class="cards">
+<div class="card"><div class="icon"></div><h3>Ferramentas de IA</h3><p>Conheça diferentes ferramentas e entenda como utilizá-las.</p></div>
+<div class="card"><div class="icon"></div><h3>Produtividade</h3><p>Utilize IA para organizar tarefas, informações e processos.</p></div>
+<div class="card"><div class="icon"></div><h3>Criação</h3><p>Aprenda aplicações de IA para criação e desenvolvimento de conteúdos.</p></div>
+<div class="card"><div class="icon"></div><h3>Soluções</h3><p>Use inteligência artificial para encontrar novas formas de resolver problemas.</p></div>
+<div class="card"><div class="icon"></div><h3>Mercado de trabalho</h3><p>Desenvolva habilidades que podem complementar sua formação profissional.</p></div>
+<div class="card"><div class="icon"></div><h3>Aplicações práticas</h3><p>Aprenda através de exemplos e situações reais de utilização.</p></div>
+</div>
+</div>
+</section>
+
+<section class="dark audience">
+<div class="container">
+<div class="section-head"><div class="kicker">Para quem é?</div><h2>A MLK é para você?</h2></div>
+<div class="cards">
+<div class="card"><div class="icon"></div><h3>Estudantes</h3><p>Para quem quer utilizar IA para estudar, pesquisar e desenvolver trabalhos com mais eficiência.</p></div>
+<div class="card"><div class="icon"></div><h3>Profissionais</h3><p>Para quem quer aprender novas ferramentas e melhorar sua produtividade.</p></div>
+<div class="card"><div class="icon"></div><h3>Quem quer se atualizar</h3><p>Para quem quer acompanhar as mudanças tecnológicas e desenvolver novas habilidades.</p></div>
+<div class="card"><div class="icon"></div><h3>Iniciantes</h3><p>Para quem nunca teve contato aprofundado com IA e quer começar do zero.</p></div>
+</div>
+</div>
+</section>
+
+<section id="curso" class="light">
+<div class="container">
+<div class="section-head"><div class="kicker">Conteúdo do curso</div><h2>O que está dentro do curso?</h2><p>Uma estrutura sugerida, do zero ao prático.</p></div>
+<div class="modules">
+<div class="module"><div class="num">01</div><h3>Fundamentos da IA</h3><p>Introdução aos conceitos e possibilidades da Inteligência Artificial.</p></div>
+<div class="module"><div class="num">02</div><h3>Ferramentas de IA</h3><p>Conheça ferramentas e suas principais aplicações.</p></div>
+<div class="module"><div class="num">03</div><h3>IA para produtividade</h3><p>Aplicações para tarefas, organização e otimização de processos.</p></div>
+<div class="module"><div class="num">04</div><h3>IA para criação</h3><p>Utilização de IA em diferentes processos criativos.</p></div>
+<div class="module"><div class="num">05</div><h3>IA aplicada ao trabalho</h3><p>Como utilizar ferramentas de IA em situações profissionais.</p></div>
+<div class="module"><div class="num">06</div><h3>Projetos práticos</h3><p>Coloque o conhecimento em prática através de aplicações.</p></div>
+</div>
+</div>
+</section>
+
+<section class="dark">
+<div class="container">
+<div class="section-head"><div class="kicker">Como funciona</div><h2>Aprender IA pode ser simples.</h2></div>
+<div class="steps">
+<div class="step"><b>01</b><h3>Escolha seu plano</h3><p>Selecione a opção que mais combina com seu objetivo.</p></div>
+<div class="step"><b>02</b><h3>Acesse o conteúdo</h3><p>Receba acesso ao curso e aos materiais da MLK.</p></div>
+<div class="step"><b>03</b><h3>Aprenda</h3><p>Estude no seu ritmo e acompanhe as aulas.</p></div>
+<div class="step"><b>04</b><h3>Coloque em prática</h3><p>Utilize o conhecimento adquirido em situações reais.</p></div>
+</div>
+</div>
+</section>
+
+<section class="light">
+<div class="container">
+<div class="section-head"><div class="kicker">Planos e preços</div><h2>Escolha o plano ideal para você.</h2><p>O plano de marketing da MLK estabelece R$199 como preço-base do curso. Os demais valores abaixo são apenas uma sugestão para testar uma escada de ofertas.</p></div>
+<div class="prices">
+<div class="price"><h3>MLK START</h3><div class="amount">R$ 29</div><ul><li>Conteúdo introdutório</li><li>Módulos básicos</li><li>Material de apoio</li></ul><a class="btn" href="#">QUERO COMEÇAR</a></div>
+<div class="price featured"><div class="badge">MAIS VENDIDO</div><h3>MLK PRO</h3><div class="amount">R$ 59</div><ul><li>Curso completo</li><li>Todos os módulos</li><li>Material de apoio</li><li>Aplicações práticas</li><li>Suporte ao aluno</li></ul><a class="btn" href="#">QUERO O MLK PRO</a></div>
+<div class="price"><h3>MLK MASTER</h3><div class="amount">R$ 99</div><ul><li>Curso completo</li><li>Todos os módulos</li><li>Materiais extras</li><li>Projetos práticos</li><li>Suporte diferenciado</li></ul><a class="btn" href="#">QUERO O MLK MASTER</a></div>
+</div>
+</div>
+</section>
+
+<section class="dark">
+<div class="container">
+<div class="section-head"><div class="kicker">Por que aprender com a MLK?</div><h2>Mais do que um curso, uma preparação para o futuro.</h2></div>
+<div class="cards">
+<div class="card"><h3>Prático</h3><p>Foco em transformar conhecimento em aplicação.</p></div>
+<div class="card"><h3>Acessível</h3><p>Conteúdo pensado para pessoas que estão começando.</p></div>
+<div class="card"><h3>Atualizado</h3><p>A área de IA muda rapidamente e exige evolução constante.</p></div>
+<div class="card"><h3>Suporte</h3><p>Canal de comunicação para dúvidas e acompanhamento.</p></div>
+</div>
+</div>
+</section>
+
+<section id="faq" class="faq">
+<div class="container">
+<div class="section-head"><div class="kicker">FAQ</div><h2>Dúvidas frequentes</h2></div>
+<div class="faq-grid">
+<details><summary>Preciso saber usar IA antes?</summary><p>Não. A proposta é apresentar os conceitos e ferramentas de forma progressiva, começando pelos fundamentos.</p></details>
+<details><summary>Para quem é o curso?</summary><p>Para estudantes e profissionais que desejam desenvolver conhecimentos e habilidades relacionadas ao uso da Inteligência Artificial.</p></details>
+<details><summary>Como recebo acesso?</summary><p>Após a confirmação da compra, o aluno recebe as instruções de acesso conforme o sistema utilizado pela MLK.</p></details>
+<details><summary>O curso é presencial ou online?</summary><p>Defina este formato antes da publicação final. O plano de marketing menciona atendimento presencial e canais digitais, mas não define o formato definitivo do curso.</p></details>
+<details><summary>Tenho suporte para dúvidas?</summary><p>Sim, caso a estrutura de suporte prevista pela MLK esteja ativa.</p></details>
+<details><summary>Quanto custa?</summary><p>O preço-base definido no plano de marketing é R$199.</p></details>
+</div>
+</div>
+</section>
+
+<section class="cta">
+<div class="container">
+<h2>O futuro do trabalho já está mudando.</h2>
+<p>Aprenda a utilizar a Inteligência Artificial de forma prática e desenvolva novas habilidades.</p>
+<a class="btn" href="#planos">QUERO APRENDER IA</a>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container footer"><div><strong><img src="MLKlogo.png" alt="MLK" style="width: 40px; height: auto;"></strong><p> © MLK </p></div><div>Matheus . Leonardo . Kennedy</div></div>
+</footer>
+</body>
+</html>
